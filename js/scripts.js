@@ -30,6 +30,24 @@ Pizza.prototype.cost = function () {
   return this.price;
 }
 
+//Client 
+
+function Client (orders, address) {
+  this.orders = orders;
+  this.address = address;
+}
+
+Client.prototype.totalCost = function () {
+  this.total = 0;
+  this.orders.forEach(function(element) {
+    this.total += element.price;
+  });
+  if(this.address != "pick up") {
+    this.total += 7;
+  }
+  return this.total;
+}
+
 
 
 $(document).ready(function(){
