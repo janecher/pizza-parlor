@@ -62,12 +62,10 @@ Client.prototype.totalCost = function() {
   for(let i=0; i<this.orders.length; i++)
   {
     this.total += this.orders[i].cost();
-    console.log(this.total);
   }
-  if(this.address) {
+  if(this.address !== "Pick-up") {
     this.total += 7;
   }
-  console.log(this.total);
   return this.total;
 }
 
@@ -115,10 +113,8 @@ function addAddress() {
   $("#delivery").on("change", function () {
     if($("#delivery").val() === "pick-up") {
       $(".address").hide();
-      return false;
     } else if ($("#delivery").val() === "delivery"){
       $(".address").show();
-      return true;
     }
   });
 }
@@ -133,15 +129,22 @@ $(document).ready(function(){
     $("input:checkbox[name=topping]:checked").each(function() {
       pizza.toppings.push($(this).val());
     });
+    if(pizza.toppings.length === 0) {
+      alert("Please choose at least one topping");
+      return;
+    }
     pizza.size = $("#size").val();
     client.addOrder(pizza);
-    client.address = $("#address").val();
+    if($("#delivery").val() === "pick-up") {
+      client.address = "Pick-up";
+    } else {
+      client.address = $("#address").val();
+    }
     $('input[type=checkbox]').each(function() 
     { 
       this.checked = false; 
     });
     displayOrders(client);
     $(".show-order").show();
-    console.log(client);
   });
 });
