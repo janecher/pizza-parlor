@@ -7,9 +7,54 @@
     <script src="js/scripts.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pizza Parlor</title>
 </head>
 <body>
-    
+    <div class="header">
+        <h1>Pizza House</h1>
+        <p>Best pizza in the city.</p>
+        <p>Delivery option available.</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 order-maker">
+                <h3>Create your pizza:</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="toppings">Toppings:</label><br>
+                        <input type="checkbox" name="topping" value="ham"> Ham<br>
+                        <input type="checkbox" name="topping" value="pepperoni"> Pepperoni<br>
+                        <input type="checkbox" name="topping" value="chicken"> Grilled chicken<br>
+                        <input type="checkbox" name="topping" value="sausage"> Sausage<br>
+                        <input type="checkbox" name="topping" value="pepper"> Pepper<br>
+                        <input type="checkbox" name="topping" value="mushrooms"> Mushrooms<br>
+                        <input type="checkbox" name="topping" value="onion"> Onion<br>
+                        <input type="checkbox" name="topping" value="pineapple"> Pineapple<br>
+                        <input type="checkbox" name="topping" value="olives"> Olives<br>
+                        <input type="checkbox" name="topping" value="tomato"> Tomato<br>
+                    </div>
+                    <div class="form-group">
+                        <label for="size">Size:</label>
+                        <select class="form-control" id="size">
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                    </div>
+                    <div class="form-group delivery">
+                        <label for="delivery">Delivery:</label>
+                        <select class="form-control" id="delivery">
+                            <option value="pick-up">Pick-up</option>
+                            <option value="delivery">Delivery</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Add pizza to my order</button>
+                </form>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 result">
+                <h3>Your order:</h3>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
