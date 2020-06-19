@@ -2,8 +2,8 @@
 
 //Pizza
 
-function Pizza (toppings, size) {
-  this.toppings = toppings;
+function Pizza (size) {
+  this.toppings = [];
   this.size = size;
 }
 
@@ -32,8 +32,8 @@ Pizza.prototype.cost = function () {
 
 //Client 
 
-function Client (orders, address) {
-  this.orders = orders;
+function Client (address) {
+  this.orders = [];
   this.address = address;
 }
 
@@ -48,8 +48,42 @@ Client.prototype.totalCost = function () {
   return this.total;
 }
 
+//User interface logic
 
+function attachAddPizzaListeners(client) {
+
+}
+
+function addAddress() {
+  $("#delivery").on("change", function () {
+    if($("#delivery").val() === "pick-up") {
+      $(".address").hide();
+      return false;
+    } else if ($("#delivery").val() === "delivery"){
+      $(".address").show();
+      return true;
+    }
+  });
+}
+ 
 
 $(document).ready(function(){
-
+  let client = new Client();
+  attachAddPizzaListeners(client);
+  addAddress();
+  $("form").submit(function(event){
+    event.preventDefault();
+    let pizza = new Pizza();
+    $("input:checkbox[name=topping]:checked").each(function() {
+      pizza.toppings.push($(this).val());
+    });
+    pizza.size = $("#size").val();
+    client.orders.push(pizza);
+    client.address = $("#address").val();
+    $('input[type=checkbox]').each(function() 
+    { 
+      this.checked = false; 
+    });
+    console.log(client);
+  });
 });

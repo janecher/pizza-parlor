@@ -17,7 +17,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 order-maker">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 create-order">
                 <h3>Create your pizza:</h3>
                 <form>
                     <div class="form-group">
@@ -47,11 +47,15 @@
                             <option value="pick-up">Pick-up</option>
                             <option value="delivery">Delivery</option>
                         </select>
+                        <div class="address">
+                            <label for="address">Delivery address:</label>
+                            <input type="text" id="address" class="form-control">                        
+                        </div>
                     </div>
                     <button type="submit" class="btn">Add pizza to my order</button>
                 </form>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 result">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 show-order">
                 <h3>Your order:</h3>
             </div>
         </div>
