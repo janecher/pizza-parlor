@@ -8,15 +8,9 @@
 
 Webpage for ordering pizza with variations of toppings and size, that calculate the price of order and delivery option.
 
-## Setup/Installation Requirements
-
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
-
 ## Known Bugs
+
+_No known bugs_
 
 ## Setup/Installation Requirements
 
