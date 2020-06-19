@@ -61,10 +61,9 @@ Client.prototype.totalCost = function() {
   this.total = 0;
   for(let i=0; i<this.orders.length; i++)
   {
-    this.total += this.orders[i].cost();
-  }
-  if(this.address !== "Pick-up") {
-    this.total += 7;
+    if(this.orders[i]) {
+      this.total += this.orders[i].cost();
+    }
   }
   return this.total;
 }
@@ -72,41 +71,56 @@ Client.prototype.totalCost = function() {
 Client.prototype.findPizza = function(id) {
   for (let i=0; i< this.orders.length; i++) {
     if (this.orders[i]) {     
-      if (this.orders[i].orderId == id) {
-        return this.corders[i];
+      if (this.orders[i].id == id) {
+        return this.orders[i];
       }
     }                          
-  };
+  }
   return false;
 }
 
 Client.prototype.deletePizza = function(id) {
   for (let i=0; i< this.orders.length; i++) {
     if (this.orders[i]) {     
-      if (this.orders[i].orderId == id) {
+      if (this.orders[i].id == id) {
         delete this.orders[i];
         return true;
       }
     }                          
-  };
+  }
   return false;
 }
 
 //User interface logic
+
 function displayOrders(client) {
   let pizzaOrder = $("ul#order");
+  let totalCost = client.totalCost();
+  if(client.totalCost() === 0) {
+    $(".show-order").html("");
+  }
   let htmlForOrders = "";
   client.orders.forEach(function(order) {
     htmlForOrders += "<li class=" + order.id + ">" + order.pizzaName() + "</li>";
-    htmlForOrders += "<button class='deleteOrder' id=" + order.id + '><i class="fa fa-trash"></i></button>';
+    htmlForOrders += "<button class='removeButton btn' id=" + order.id + '>Remove</i></button>';
+    htmlForOrders += '<div class="pizza' + order.id +'"></div>';
   });
   pizzaOrder.html(htmlForOrders);
+  if(client.address !== "Pick-up") {
+    client.total += 7;
+  }
   $(".delivery-answer").text(client.address);
-  $("#total").text("$"+client.totalCost());
+  $("#total").text("$"+totalCost);
 }
 
-function attachAddPizzaListeners(client) {
-
+function attachOrderInfoListeners(client) {
+  $("ul#order").on("click", "li", function() {
+    $(this).html(showPizzaInfo(this.className, client));
+  });
+  $("ul#order").on("click", ".removeButton", function() {
+    client.deletePizza(this.id);
+    displayOrders(client);
+  });
 }
 
 function addAddress() {
@@ -119,9 +133,20 @@ function addAddress() {
   });
 }
 
+function showPizzaInfo(pizzaId, client) {
+  const pizza = client.findPizza(pizzaId);
+  console.log(pizza);
+  let pizzaInfo = "<ul class='pizza-info'>";
+  for(let i=0; i < pizza.toppings.length; i++) {
+    pizzaInfo += "<li>" + capitalizeFirstLetter(pizza.toppings[i]) + "</li>";
+  }
+  pizzaInfo += "</ul>";
+  return pizzaInfo;
+}
+
 $(document).ready(function(){
   let client = new Client();
-  //attachAddPizzaListeners(client);
+  attachOrderInfoListeners(client);
   addAddress();
   $("form").submit(function(event){
     event.preventDefault();
