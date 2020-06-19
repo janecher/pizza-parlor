@@ -1,4 +1,29 @@
+.header {
+  text-align: center;
+  padding: 20px;
+  background:linear-gradient(to right, #009246 0, #009246 33%, #FFF 33%, #FFF 66%, #ce2b37 66%, #ce2b37 100%); 
+}
+
+.row {
+  margin-top: 10px;
+  border-top: 2px solid #009246;
+}
+
+.create-order {
+  border-right: 2px solid #009246;
+}
+
+.show-order {
+  padding-left: 30px;
+}
+
 .address {
   display: none;
   margin-top: 10px;
+}
+
+.btn {
+  background-color: #009246;
+  font-weight: bold;
+  color: white;
 }
