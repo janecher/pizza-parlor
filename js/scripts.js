@@ -98,6 +98,7 @@ function displayOrders(client) {
   let totalCost = client.totalCost();
   if(client.totalCost() === 0) {
     pizzaOrder.html("");
+    $("#pizza-info").html("");
     $(".extra-info").hide();
     return;
   }
@@ -118,13 +119,15 @@ function displayOrders(client) {
 function attachOrderInfoListeners(client) {
   $("ul#order").on("click", "li", function() {
     $("div#pizza-info").html(showPizzaInfo(this.className, client));
+    $("div#pizza-info").show();
   });
   $("ul#order").on("click", "div#pizza-info", function() {
-    $(this).hide();
+    $("#pizza-info").html("");;
   });
   $("ul#order").on("click", ".removeButton", function() {
     client.deletePizza(this.id);
     displayOrders(client);
+    $("div#pizza-info").hide();
   });
 }
 
@@ -140,11 +143,11 @@ function addAddress() {
 
 function showPizzaInfo(pizzaId, client) {
   const pizza = client.findPizza(pizzaId);
-  let pizzaInfo = "<ul class='pizza-info'>";
+  let pizzaInfo = "<p>Pizza toppings: ";
   for(let i=0; i < pizza.toppings.length; i++) {
-    pizzaInfo += "<li>" + capitalizeFirstLetter(pizza.toppings[i]) + "</li>";
+    pizzaInfo += capitalizeFirstLetter(pizza.toppings[i]) + " ";
   }
-  pizzaInfo += "</ul>";
+  pizzaInfo += "</p>";
   return pizzaInfo;
 }
 
@@ -177,6 +180,7 @@ $(document).ready(function(){
     });
     $("#address").val("");
     displayOrders(client);
+    $("img").hide();
     $(".show-order").show();
   });
 });

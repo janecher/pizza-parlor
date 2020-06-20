@@ -34,17 +34,34 @@ h3 {
 }
 
 .order-header{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #order{
   display: inline;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 li {
   margin-bottom: 10px;
 }
+
+.extra-info {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #009246;
+  font-size: 16px;
+}
+
+.delivery-answer, #total {
+  font-weight: bold;
+}
+
+img {
+  padding-top: 20px;
+  width: 100%;
+}
+
 @media screen and (max-width: 480px) {
    
 }
