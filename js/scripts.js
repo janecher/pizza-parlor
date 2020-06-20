@@ -24,7 +24,7 @@ Pizza.prototype.cost = function() {
     this.price += 5;
   } else if (this.toppings.length >= 7 && this.size !== "large") {
     this.price += 7;
-  } else if (this.toppings.length > 3 && this.toppings.length < 7 && this.size === "large"){
+  } else if (this.toppings.length > 3 && this.toppings.length < 7 && this.size === "large") {
     this.price += 6;
   } else if (this.toppings.length >= 7 && this.size === "large") {
     this.price += 8;
@@ -96,7 +96,7 @@ Client.prototype.deletePizza = function(id) {
 function displayOrders(client) {
   let pizzaOrder = $("ul#order");
   let totalCost = client.totalCost();
-  if(client.totalCost() === 0) {
+  if (client.totalCost() === 0) {
     pizzaOrder.html("");
     $("#pizza-info").html("");
     $(".extra-info").hide();
@@ -108,11 +108,11 @@ function displayOrders(client) {
     htmlForOrders += "<button class='removeButton btn' id=" + order.id + '><i class="fa fa-close"></i></button></li>';
   });
   pizzaOrder.html(htmlForOrders);
-  if(client.address !== "Pick-up") {
-    totalCost += 7;
+  if (client.address !== "Pick-up") {
+    client.total += 7;
   }
   $(".delivery-answer").text(client.address);
-  $("#total").text("$" + totalCost);
+  $("#total").text("$" + client.total);
   $(".extra-info").show();
 }
 
@@ -120,9 +120,6 @@ function attachOrderInfoListeners(client) {
   $("ul#order").on("click", "li", function() {
     $("div#pizza-info").html(showPizzaInfo(this.className, client));
     $("div#pizza-info").show();
-  });
-  $("ul#order").on("click", "div#pizza-info", function() {
-    $("#pizza-info").html("");;
   });
   $("ul#order").on("click", ".removeButton", function() {
     client.deletePizza(this.id);
@@ -132,10 +129,10 @@ function attachOrderInfoListeners(client) {
 }
 
 function addAddress() {
-  $("#delivery").on("change", function () {
-    if($("#delivery").val() === "pick-up") {
+  $("#delivery").on("change", function() {
+    if ($("#delivery").val() === "pick-up") {
       $(".address").hide();
-    } else if ($("#delivery").val() === "delivery"){
+    } else if ($("#delivery").val() === "delivery") {
       $(".address").show();
     }
   });
@@ -167,7 +164,7 @@ $(document).ready(function(){
     }
     pizza.size = $("#size").val();
     client.addOrder(pizza);
-    if($("#delivery").val() === "pick-up" ) {
+    if ($("#delivery").val() === "pick-up" ) {
       client.address = "Pick-up";
     } else if (!($("#address").val())) {
       client.address = "Pick-up (Client didn't input the address)";

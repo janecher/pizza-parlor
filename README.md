@@ -24,9 +24,10 @@ _No known bugs_
 |----------|-------|-------|
 | Takes user input and returns it | _Topping checked:_ Pineapple, Ham, Cheese; _Size_: Medium; _Delivery_: pick up | Your order: Medium pizza with: pineapple, ham, cheese |
 | Calculate price of pizza | Medium pizza with: pineapple, ham, cheese | Price: $15 |
-| Calculate price of order | Two small cheese pizza, delivery option | Price: $ 27 |
-| Show pizza info | _Pizza order click_ | _Pizza info appear:_ Size: medium; Toppings: pineapple, ham, cheese |
-| Show order info | _Your order section_ | _List of pizza, total price and delivery methos_ |
+| Calculate total price of order | Two small cheese pizza, delivery option | Price: $ 27 |
+| Show pizza info | _Pizza order click_ | _Pizza toppnigs appear:_ Pizza toppings: Pineapple, Ham, Cheese |
+| Show order info (delivery and total price) | _Your order section_ | _List of ordered pizza, total price and delivery info_ |
+| Delete pizza from order list | _Push delete button next to pizza in the order list_ | _Pizza removed from the order_ |
 
 ## Support and contact details
 
