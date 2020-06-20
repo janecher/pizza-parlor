@@ -59,9 +59,25 @@ li {
 
 img {
   padding-top: 20px;
+  padding-left: 10px;
   width: 100%;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
+  .create-order {
+    border-style: none;
+  }
+  img {
+    padding: 0px;
+    padding-top: 10px;
+  }
+  li {
+    margin-left: 15px;
+  }
+  .show-order {
+    margin-top: 20px;
+    padding: 0px;
+    border-top: 2px solid #009246;
+  }
    
 }
