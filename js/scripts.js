@@ -167,7 +167,7 @@ $(document).ready(function(){
     if ($("#delivery").val() === "pick-up" ) {
       client.address = "Pick-up";
     } else if (!($("#address").val())) {
-      client.address = "Pick-up (Client didn't input the address)";
+      client.address = "Pick-up";
     } else {
       client.address = $("#address").val();
     }
