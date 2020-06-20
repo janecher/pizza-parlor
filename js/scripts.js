@@ -140,11 +140,12 @@ function addAddress() {
 
 function showPizzaInfo(pizzaId, client) {
   const pizza = client.findPizza(pizzaId);
-  let pizzaInfo = "<p>Pizza toppings: ";
-  for(let i=0; i < pizza.toppings.length; i++) {
-    pizzaInfo += capitalizeFirstLetter(pizza.toppings[i]) + " ";
+  let pizzaInfo = "";
+  if (pizza) {
+    for(let i=0; i < pizza.toppings.length; i++) {
+      pizzaInfo += capitalizeFirstLetter(pizza.toppings[i]) + " ";
+    }
   }
-  pizzaInfo += "</p>";
   return pizzaInfo;
 }
 
